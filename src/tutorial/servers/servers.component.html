@@ -1,0 +1,24 @@
+<label>Server name:</label>
+<input type="text"
+       class="form-control"
+       (input)="onUpdateServerName($event)">
+<!--THE SAME AS TWO WAY BINDING-->
+<!--[(ngModel)]="serverName">-->
+<p>The server name is: {{serverName}}</p>
+
+<button [disabled]="disableAddServerButton"
+        class="btn btn-primary"
+        (click)="onCreateServer()">Add Server
+</button>
+
+<p>Can I add Server: {{!disableAddServerButton}}</p>
+<!--THE SAME AS-->
+<!--<p [innerText]="!disableAddServerButton">
+    This text will not be displayed because of "innerText" attribute</p>-->
+
+<p *ngIf="serverCreated; else noServer">{{serverCreationStatus}}</p>
+<ng-template #noServer>
+    <p>No created server yet</p>
+</ng-template>
+
+<app-server *ngFor="let server of serversList"></app-server>

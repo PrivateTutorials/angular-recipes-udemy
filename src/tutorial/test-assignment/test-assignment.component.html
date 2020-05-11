@@ -1,0 +1,26 @@
+<h2>Test assignment</h2>
+<label for="userName">Server name:</label>
+<input id="userName"
+       class="form-control"
+       type="text"
+       [(ngModel)]="userName">
+<p>Entered user name: {{userName}}</p>
+<button class="btn btn-primary"
+        [disabled]="!userName"
+        (click)="userName = ''">Reset user
+    <!-- THE SAME AS:-->
+    <!--(click)="onUserReset($event)">Reset user-->
+</button>
+
+<hr>
+<button class="btn btn-primary"
+        (click)="onToggleDetails()">Display details
+</button>
+<p *ngIf="isParagraphDisplayed">This is a secret paragraph that should be shown</p>
+
+<!--[ngStyle]="{backgroundColor: log >= 5 ? 'blue' : 'transparent'}"-->
+<p *ngFor="let log of numberOfParagraphs; let i =index"
+   [ngStyle]="{backgroundColor: i >= 4 ? 'blue' : 'transparent'}"
+   [ngClass]="{'white-text': i>=4}">
+    Number of log: {{log}}
+</p>
