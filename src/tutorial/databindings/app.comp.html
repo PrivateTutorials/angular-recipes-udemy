@@ -1,0 +1,18 @@
+<div class="container">
+    <app-cockpit (serverCreated)="onServerAdded($event)"
+                 (bpCreated)="onBlueprintAdded($event)"></app-cockpit>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12">
+            <app-server-element
+                    *ngFor="let server of serverElements"
+                    [elementAlias]="server">
+                <!--HTML will be passed to child component as ng-content-->
+                <p #contentParagraph>
+                    <strong *ngIf="server.type === 'server'" style="color: #ff0000">{{ server.content }}</strong>
+                    <em *ngIf="server.type === 'blueprint'">{{ server.content }}</em>
+                </p>
+            </app-server-element>
+        </div>
+    </div>
+</div>

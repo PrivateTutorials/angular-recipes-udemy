@@ -1,0 +1,24 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <!--<app-recepies></app-recepies>
+            <app-shopping-list></app-shopping-list>-->
+            <app-game-control (intervalFiredEvent)="onIntervalFired($event)"></app-game-control>
+            <div class="col-xs-6">
+                <h3>Odds</h3>
+                <app-odd *ngFor="let num of odds" [number]="num">
+                </app-odd>
+            </div>
+
+
+            <div class="col-xs-6">
+                <h3>Evens</h3>
+                <app-even *ngFor="let num of evens" [number]="num">
+                </app-even>
+            </div>
+
+        </div>
+    </div>
+</div>
