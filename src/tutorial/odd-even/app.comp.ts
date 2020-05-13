@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'app-root',
     templateUrl: './app.comp.html',
-    styleUrls: ['./app.component.css']
+    styleUrls: ['./app.compone.css']
 })
 export class AppComp {
     odds: number[] = [];
