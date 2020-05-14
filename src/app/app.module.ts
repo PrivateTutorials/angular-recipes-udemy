@@ -11,6 +11,7 @@ import { RecipeItemComponent } from './recepies/recipe-list/recipe-item/recipe-i
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import {DropdownDirective} from "./shared/dropdown-directive";
+import {RecipeService} from "./recepies/recipe.service";
 
 @NgModule({
     declarations: [
@@ -28,7 +29,7 @@ import {DropdownDirective} from "./shared/dropdown-directive";
         BrowserModule,
         FormsModule
     ],
-    providers: [],
+    providers: [RecipeService],
     bootstrap: [AppComponent] // what Comp you should recognize in index.html file
 })
 export class AppModule {
