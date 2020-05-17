@@ -12,6 +12,8 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import {DropdownDirective} from "./shared/dropdown-directive";
 import {RecipeService} from "./recepies/recipe.service";
+import {AppRoutingModule} from "./app-routing.module";
+import { RecipeStartComponent } from './recepies/recipe-start/recipe-start.component';
 
 @NgModule({
     declarations: [
@@ -23,11 +25,13 @@ import {RecipeService} from "./recepies/recipe.service";
         RecipeItemComponent,
         ShoppingListComponent,
         ShoppingEditComponent,
-        DropdownDirective
+        DropdownDirective,
+        RecipeStartComponent
     ],
     imports: [
         BrowserModule,
-        FormsModule
+        FormsModule,
+        AppRoutingModule
     ],
     providers: [RecipeService],
     bootstrap: [AppComponent] // what Comp you should recognize in index.html file
