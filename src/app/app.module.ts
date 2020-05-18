@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
-import { RecepiesComponent } from './recepies/recepies.component';
+import { RecipesComponent } from './recepies/recipes.component';
 import { RecipeListComponent } from './recepies/recipe-list/recipe-list.component';
 import { RecipeDetailComponent } from './recepies/recipe-detail/recipe-detail.component';
 import { RecipeItemComponent } from './recepies/recipe-list/recipe-item/recipe-item.component';
@@ -20,7 +20,7 @@ import { RecipeEditComponent } from './recepies/recipe-edit/recipe-edit.componen
     declarations: [
         AppComponent,
         HeaderComponent,
-        RecepiesComponent,
+        RecipesComponent,
         RecipeListComponent,
         RecipeDetailComponent,
         RecipeItemComponent,
