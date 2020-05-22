@@ -5,7 +5,7 @@ import {RecipeService} from "./recipe.service";
   selector: 'app-recepies',
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.css'],
-  providers: [RecipeService]
+ //  providers: [RecipeService] // <- Comp and all its children use the same instance of Service class
 })
 export class RecipesComponent implements OnInit {
 

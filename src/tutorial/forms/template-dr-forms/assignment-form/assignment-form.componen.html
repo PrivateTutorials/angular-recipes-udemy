@@ -1,0 +1,44 @@
+<form (ngSubmit)="onSubmit()" #assignmentForm="ngForm">
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email"
+               id="email"
+               class="form-control"
+               ngModel
+               name="email"
+               email
+               required
+               #email="ngModel">
+        <span class="help-block"
+              *ngIf="!email.valid && email.touched">Please enter valid email</span>
+    </div>
+
+    <div class="form-group">
+        <label for="subscription">Subscription type</label>
+        <select id="subscription"
+                class="form-control"
+                [ngModel]="defaultSubscriptionOption"
+                name="subscription">
+            <!-- [ngModel] - 1 way binding. When we select from Drop down new option, the  property is .tx is not updated-->
+            <option *ngFor="let option of subscriptions"
+                    [value]="option">{{option}}
+            </option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password"
+               id="password"
+               class="form-control"
+               ngModel
+               name="password"
+               required
+               #password="ngModel">
+        <span class="help-block"
+              *ngIf="!password.valid && password.touched">Please enter password</span>
+    </div>
+    <button class="btn btn-primary"
+            type="submit">Submit
+    </button>
+</form>
