@@ -26,7 +26,7 @@ export class ServerComponen implements OnInit {
 
     ngOnInit() {
         this.route.data.subscribe((data: Data) => {
-            this.server = data['server']; // matched name in router property
+            this.server = data['server']; // matched name in router property; from ServerResolverService
         });
     }
 
