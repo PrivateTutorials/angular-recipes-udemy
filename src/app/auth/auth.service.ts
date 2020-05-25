@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {catchError, tap} from "rxjs/operators";
 import {throwError} from "rxjs";
 import {User} from "./user.model";
+import {Router} from "@angular/router";
 
 export interface AuthResponseData {
     idToken: string;
@@ -21,9 +22,11 @@ export class AuthService {
     // BehaviorSubject - gives access to the last previously stored data, before you have subscribed to it
     userSubject = new BehaviorSubject<User>(null); // null - a starting value
     private readonly apiKey = 'AIzaSyBkZQWSjdvQ7znRts529C_xmFoOEZRFbYg';
+    tokenExpirationTimer: number; // Timer
 
     // If I want to use other services here, then @Injectable decorator has to be added to class - user
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient,
+                private router: Router) {
     }
 
     signup(email: string, password: string): Observable<any> {
@@ -61,8 +64,44 @@ export class AuthService {
         );
     }
 
-    logout(){
+    autoLogin() {
+        const userData: {
+            email: string,
+            id: string,
+            _token: string,
+            _tokenExpirationDate: string
+        } = JSON.parse(localStorage.getItem('userData'));
+        if (!userData) {
+            return;
+        }
+        const loadedUser = new User(
+            userData.email,
+            userData.id,
+            userData._token,
+            new Date(userData._tokenExpirationDate)
+        );
+
+        // getter - checks token expiration inside
+        if (loadedUser.token) {
+            this.userSubject.next(loadedUser);
+            // get Time - converts Date to milliseconds
+            const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
+            this.autoLogout(expirationDuration);
+        }
+    }
+
+    logout() {
         this.userSubject.next(null);
+        this.router.navigate(['/auth']);
+        localStorage.removeItem('userData');
+        if (this.tokenExpirationTimer) {
+            clearTimeout(this.tokenExpirationTimer);
+        }
+    }
+
+    autoLogout(expirationDuration: number) {
+        // if I used arrow f(), then I could use 'this.logout', not binding
+        this.tokenExpirationTimer = setTimeout(this.logout.bind(this), expirationDuration)
     }
 
     private handleAuthentication(email: string, userID: string, token: string, expiresIn: number) {
@@ -71,6 +110,8 @@ export class AuthService {
 
         const user = new User(email, userID, token, expirationDate)
         this.userSubject.next(user);
+        this.autoLogout(expiresIn * 1000);
+        localStorage.setItem('userData', JSON.stringify(user));
     }
 
     private handleError(errorResponse: HttpErrorResponse) {

@@ -8,12 +8,15 @@ import {RecipeStartComponent} from "./recepies/recipe-start/recipe-start.compone
 import {RecipeEditComponent} from "./recepies/recipe-edit/recipe-edit.component";
 import {RecipesResolverService} from "./recepies/recipes-resolver.service";
 import {AuthComponent} from "./auth/auth.component";
+import {AuthGuard} from "./auth/auth-guard";
 
 
 const appRoutes: Routes = [
     {path: '', redirectTo: 'recipes', pathMatch: 'full'},
     {
-        path: 'recipes', component: RecipesComponent, children: [
+        path: 'recipes', component: RecipesComponent,
+        canActivate: [AuthGuard], // protect url from not logged user
+        children: [
             {path: '', component: RecipeStartComponent},
             {path: 'new', component: RecipeEditComponent},
             // will load component when resolve() f() will get some data
