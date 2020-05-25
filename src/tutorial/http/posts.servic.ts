@@ -42,6 +42,7 @@ export class PostsServic {
             // params: new HttpParams().set('print', 'pretty') // for single param
             params: searchParams
         }).pipe(
+            // not item by item, but the whole array
             map((responseData) => {
                 const postsArray: Post[] = [];
                 for (const key in responseData) {
