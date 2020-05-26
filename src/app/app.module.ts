@@ -19,6 +19,8 @@ import {RecipeEditComponent} from './recepies/recipe-edit/recipe-edit.component'
 import {AuthComponent} from './auth/auth.component';
 import {LoadingSpinnerComponent} from './shared/loading-spinner/loading-spinner.component';
 import {AuthInterceptorService} from "./auth/auth-interceptor.service";
+import {AlertComponent} from "./shared/alert/alert.component";
+import {PlaceholderDirective} from "./shared/placeholder/placeholder.directive";
 
 @NgModule({
     declarations: [
@@ -34,7 +36,9 @@ import {AuthInterceptorService} from "./auth/auth-interceptor.service";
         RecipeStartComponent,
         RecipeEditComponent,
         AuthComponent,
-        LoadingSpinnerComponent
+        LoadingSpinnerComponent,
+        AlertComponent,
+        PlaceholderDirective
     ],
     imports: [
         BrowserModule,
@@ -49,7 +53,10 @@ import {AuthInterceptorService} from "./auth/auth-interceptor.service";
             useClass: AuthInterceptorService,
             multi: true // allow multiple interceptors
         }],
-    bootstrap: [AppComponent] // what Comp you should recognize in index.html file
+    bootstrap: [AppComponent], // what Comp you should recognize in index.html file
+    entryComponents: [ // dynamic components, that will be created without html selector, or rout config (but from code)
+        AlertComponent // for Angular >9, you may not indicate it
+    ]
 })
 export class AppModule {
 }

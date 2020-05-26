@@ -6,7 +6,7 @@ import {Directive, ElementRef, HostBinding, HostListener, Input} from "@angular/
 export class DropdownDirective {
     @HostBinding('class.open') isOpen = false;
 
-    // The simpler solution doesn't require constructor. Not closes DD is you click outside
+    // The simpler solution doesn't require constructor. Not closes DropDown is you click outside
     /*  @HostListener('click') toggleOpen() {
           this.isOpen = !this.isOpen;
       }*/

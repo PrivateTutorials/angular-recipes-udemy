@@ -1,6 +1,11 @@
 <div class="panel panel-default">
     <div class="panel-heading" #heading>{{ element.name }}</div>
     <div class="panel-body">
+        <!--
+         Initially, all content that is between angular component tags is lost
+         If you want to pass to child comp any data from parent one, you indicate the place where to store it
+         <app-parent-comp><p>some content</p></app-parent-comp>
+         -->
         <ng-content></ng-content>
     </div>
 </div>

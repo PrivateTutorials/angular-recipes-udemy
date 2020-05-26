@@ -25,6 +25,7 @@ export class ServerElementComponent implements OnInit, OnChanges, AfterViewInit,
         content: string,
     };
     @ViewChild('heading', {static: true}) header: ElementRef;
+    // contentParagraph - will look for elementRef in parent component template (app.component.html)
     @ContentChild('contentParagraph', {static: true}) paragraph: ElementRef;
 
     constructor() {
