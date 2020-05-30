@@ -23,7 +23,7 @@ export class AuthService {
     // BehaviorSubject - gives access to the last previously stored data, before you have subscribed to it
     userSubject = new BehaviorSubject<User>(null); // null - a starting value
     // private readonly apiKey = 'AIzaSyBkZQWSjdvQ7znRts529C_xmFoOEZRFbYg';
-    tokenExpirationTimer: number; // Timer
+    tokenExpirationTimer: any; // Timer
 
     // If I want to use other services here, then @Injectable decorator has to be added to class - user
     constructor(private http: HttpClient,

@@ -17,7 +17,7 @@ import {shoppingListReducer} from "./shopping-list/store/shopping-list.reducer";
     ],
     // RecipesModule, AuthModule and ShoppingListModule are not added because of lazy loading
     imports: [
-        BrowserModule,
+        BrowserModule.withServerTransition({ appId: 'serverApp' }),
         HttpClientModule,
         SharedModule,
         StoreModule.forRoot({ // we tell ngRx where to look for reducers
