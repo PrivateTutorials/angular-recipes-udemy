@@ -9,6 +9,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {SharedModule} from "./shared/shared.module";
 import {CoreModule} from "./core.module";
 import {shoppingListReducer} from "./shopping-list/store/shopping-list.reducer";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
     declarations: [
@@ -20,6 +21,7 @@ import {shoppingListReducer} from "./shopping-list/store/shopping-list.reducer";
         BrowserModule.withServerTransition({ appId: 'serverApp' }),
         HttpClientModule,
         SharedModule,
+        BrowserAnimationsModule,
         StoreModule.forRoot({ // we tell ngRx where to look for reducers
             shoppingList: shoppingListReducer
         }),
