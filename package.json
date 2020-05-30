@@ -21,6 +21,7 @@
     "@angular/router": "~9.1.6",
     "bootstrap": "^3.4.1",
     "rxjs": "~6.5.4",
+    "@ngrx/store": "^9.2.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },

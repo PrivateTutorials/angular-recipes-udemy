@@ -5,6 +5,7 @@ import {catchError, tap} from "rxjs/operators";
 import {throwError} from "rxjs";
 import {User} from "./user.model";
 import {Router} from "@angular/router";
+import {environment} from "../../environments/environment"; // Ang CLI will swap both: dev and prod files, regarding on build type
 
 export interface AuthResponseData {
     idToken: string;
@@ -21,7 +22,7 @@ export interface AuthResponseData {
 export class AuthService {
     // BehaviorSubject - gives access to the last previously stored data, before you have subscribed to it
     userSubject = new BehaviorSubject<User>(null); // null - a starting value
-    private readonly apiKey = 'AIzaSyBkZQWSjdvQ7znRts529C_xmFoOEZRFbYg';
+    // private readonly apiKey = 'AIzaSyBkZQWSjdvQ7znRts529C_xmFoOEZRFbYg';
     tokenExpirationTimer: number; // Timer
 
     // If I want to use other services here, then @Injectable decorator has to be added to class - user
@@ -30,7 +31,7 @@ export class AuthService {
     }
 
     signup(email: string, password: string): Observable<any> {
-        return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${this.apiKey}`, {
+        return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.firebaseAPIKey}`, {
             email,
             password,
             returnSecureToken: true
@@ -48,7 +49,7 @@ export class AuthService {
     }
 
     login(email: string, password: string): Observable<any> {
-        return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.apiKey}`, {
+        return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.firebaseAPIKey}`, {
             email,
             password,
             returnSecureToken: true
