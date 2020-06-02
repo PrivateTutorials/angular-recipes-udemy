@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {BehaviorSubject, Observable, Subject} from "rxjs";
-import {catchError, tap} from "rxjs/operators";
-import {throwError} from "rxjs";
-import {User} from "./user.model";
-import {Router} from "@angular/router";
-import {environment} from "../../environments/environment"; // Ang CLI will swap both: dev and prod files, regarding on build type
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {catchError, tap} from 'rxjs/operators';
+import {throwError} from 'rxjs';
+import {User} from './user.model';
+import {Router} from '@angular/router';
+import {environment} from '../../environments/environment'; // Ang CLI will swap both: dev and prod files, regarding on build type
 
 export interface AuthResponseData {
     idToken: string;
@@ -43,7 +43,7 @@ export class AuthService {
                     responseData.email,
                     responseData.localId,
                     responseData.idToken,
-                    +responseData.expiresIn)
+                    +responseData.expiresIn);
             })
         );
     }
@@ -60,7 +60,7 @@ export class AuthService {
                     responseData.email,
                     responseData.localId,
                     responseData.idToken,
-                    +responseData.expiresIn)
+                    +responseData.expiresIn);
             })
         );
     }
@@ -102,14 +102,14 @@ export class AuthService {
 
     autoLogout(expirationDuration: number) {
         // if I used arrow f(), then I could use 'this.logout', not binding
-        this.tokenExpirationTimer = setTimeout(this.logout.bind(this), expirationDuration)
+        this.tokenExpirationTimer = setTimeout(this.logout.bind(this), expirationDuration);
     }
 
     private handleAuthentication(email: string, userID: string, token: string, expiresIn: number) {
         // new Date().getTime(); // current time in MS
         const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
 
-        const user = new User(email, userID, token, expirationDate)
+        const user = new User(email, userID, token, expirationDate);
         this.userSubject.next(user);
         this.autoLogout(expiresIn * 1000);
         localStorage.setItem('userData', JSON.stringify(user));

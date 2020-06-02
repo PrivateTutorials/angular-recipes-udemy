@@ -1,11 +1,11 @@
-import {Injectable} from "@angular/core";
-import {HttpClient, HttpParams} from "@angular/common/http";
-import {RecipeService} from "../recepies/recipe.service";
-import {Recipe} from "../recepies/recipe.model";
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {RecipeService} from '../recepies/recipe.service';
+import {Recipe} from '../recepies/recipe.model';
 
-import {exhaustMap, map, take, tap} from "rxjs/operators";
-import {Observable} from "rxjs";
-import {AuthService} from "../auth/auth.service";
+import {exhaustMap, map, take, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {AuthService} from '../auth/auth.service';
 
 @Injectable({
     providedIn: 'root'
@@ -32,11 +32,11 @@ export class DataStorageService {
             map(recipes => {
                 return recipes.map(recipe => {
                     return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []};
-                })
+                });
             }),
             tap(recipes => {
                 this.recipeService.setRecipes(recipes);
-            }))
+            }));
     }
 
     fetchRecipesOldVersion(): Observable<Recipe[]> {
@@ -54,17 +54,17 @@ export class DataStorageService {
                 return this.http.get<Recipe[]>(this.firebaseUrl, {
                     // For Firebase we set params. For other DBs, we could set auth in header req
                     params: new HttpParams().set('auth', user.token)
-                })
+                });
             }),
             // not item by item, but the whole array
             map(recipes => {
                 return recipes.map(recipe => {
                     return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []};
-                })
+                });
             }),
             tap(recipes => {
                 this.recipeService.setRecipes(recipes);
-            }))
+            }));
     }
 }
 

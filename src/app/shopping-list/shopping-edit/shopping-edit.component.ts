@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {Ingredient} from "../../shared/ingredient.model";
-import {ShoppingListService} from "../shopping-list.service";
-import {NgForm} from "@angular/forms";
-import {Subscription} from "rxjs";
-import {Store} from "@ngrx/store";
+import {Ingredient} from '../../shared/ingredient.model';
+import {ShoppingListService} from '../shopping-list.service';
+import {NgForm} from '@angular/forms';
+import {Subscription} from 'rxjs';
+import {Store} from '@ngrx/store';
 import * as ShoppingListActions from '../store/shopping-list.actions';
 import * as fromShoppingList from '../store/shopping-list.reducer'; // fromShoppingList - convention
 
@@ -41,11 +41,11 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
                 this.ingredientForm.setValue({
                     name: this.editedItem.name,
                     amount: this.editedItem.amount
-                })
+                });
             } else {
                 this.editMode = false;
             }
-        })
+        });
 
         /*this.subscription = this.shoppingListService.startedEditing.subscribe((itemIndex: number) => {
             this.editedItemIndex = itemIndex;
@@ -76,7 +76,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     onDelete() {
         // before ngRx
         // this.shoppingListService.deleteIngredient(this.editedItemIndex);
-        this.store.dispatch(new ShoppingListActions.DeleteIngredient())
+        this.store.dispatch(new ShoppingListActions.DeleteIngredient());
         this.onClear();
     }
 

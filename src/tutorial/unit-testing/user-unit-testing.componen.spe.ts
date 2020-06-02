@@ -4,6 +4,8 @@ import {UserUnitTestingComponen} from './user-unit-testing.componen';
 import {UserTestCompServic} from "./shared/user-test-comp.servic";
 import {DataServic} from "./shared/data.servic";
 
+// TestBed is the main entry to all of Angular’s testing interface
+
 describe('UserUnitTestingComponent', () => {
     let component: UserUnitTestingComponen;
     let fixture: ComponentFixture<UserUnitTestingComponen>;
@@ -16,6 +18,7 @@ describe('UserUnitTestingComponent', () => {
     }));
 
     beforeEach(() => {
+        // The createComponent method actually returns a ComponentFixture
         fixture = TestBed.createComponent(UserUnitTestingComponen); // create component in testing environment (TedtBed)
         component = fixture.componentInstance;
     });
@@ -78,3 +81,8 @@ describe('UserUnitTestingComponent', () => {
         expect(component.data).toBe('Data');
     }))
 });
+
+// useful methods:
+//
+// component.ngOnInit();
+// expect(component.formGroup instanceof FormGroup).toBe(true);

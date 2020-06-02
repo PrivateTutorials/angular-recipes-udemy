@@ -1,8 +1,8 @@
-import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from "@angular/router";
-import {Injectable} from "@angular/core";
-import {Observable} from "rxjs";
-import {AuthService} from "./auth.service";
-import {map, take, tap} from "rxjs/operators";
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {AuthService} from './auth.service';
+import {map, take, tap} from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -32,7 +32,7 @@ export class AuthGuard implements CanActivate {
                     this.router.navigate(['/auth']);
                 }
             })*/
-        )
+        );
     }
 
 }

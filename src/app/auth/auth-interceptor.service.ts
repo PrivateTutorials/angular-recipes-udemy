@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpParams, HttpRequest} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {AuthService} from "./auth.service";
-import {exhaustMap, take} from "rxjs/operators";
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpParams, HttpRequest} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {AuthService} from './auth.service';
+import {exhaustMap, take} from 'rxjs/operators';
 
 @Injectable()
 export class AuthInterceptorService implements HttpInterceptor {
@@ -27,9 +27,9 @@ export class AuthInterceptorService implements HttpInterceptor {
                 const modifiedRequest = req.clone({
                     // For Firebase we set params. For other DBs, we could set auth in header req
                     params: new HttpParams().set('auth', user.token)
-                })
+                });
                 return next.handle(modifiedRequest);
             })
-        )
+        );
     }
 }

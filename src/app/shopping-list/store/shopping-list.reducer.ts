@@ -1,14 +1,14 @@
-import {Ingredient} from "../../shared/ingredient.model";
-import * as ShoppingListActions from "./shopping-list.actions";
+import {Ingredient} from '../../shared/ingredient.model';
+import * as ShoppingListActions from './shopping-list.actions';
 
 export interface State {
-    ingredients: Ingredient[],
-    editedIngredient: Ingredient,
-    editedIngredientIndex: number
+    ingredients: Ingredient[];
+    editedIngredient: Ingredient;
+    editedIngredientIndex: number;
 }
 
 export interface AppState {
-    shoppingList: State // as in app.module
+    shoppingList: State; // as in app.module
 }
 
 
@@ -21,7 +21,7 @@ const initialState: State = {
     ],
     editedIngredient: null,
     editedIngredientIndex: -1 // not type, but value. Thus: -1, because array doesn't have minus indexes
-}
+};
 
 export function shoppingListReducer(state: State = initialState, action: any) { // state = initialState: default value
     switch (action.type) {
@@ -29,12 +29,12 @@ export function shoppingListReducer(state: State = initialState, action: any) { 
             return {
                 ...state, // copy of Obj
                 ingredients: [...state.ingredients, action.payload]// overriding 'ingredients' property and adding a new value there
-            }
+            };
         case ShoppingListActions.ADD_INGREDIENTS:
             return {
                 ...state,
                 ingredients: [...state.ingredients, ...action.payload]
-            }
+            };
         case ShoppingListActions.UPDATE_INGREDIENT:
             const ingredient = state.ingredients[state.editedIngredientIndex];
             const updatedIngredient = {
@@ -49,7 +49,7 @@ export function shoppingListReducer(state: State = initialState, action: any) { 
                 ingredients: updatedIngredients,
                 editedIngredientIndex: -1,
                 editedIngredient: null
-            }
+            };
         case ShoppingListActions.DELETE_INGREDIENT:
             return {
                 ...state,
@@ -58,7 +58,7 @@ export function shoppingListReducer(state: State = initialState, action: any) { 
                 }),
                 editedIngredientIndex: -1,
                 editedIngredient: null
-            }
+            };
         case ShoppingListActions.START_EDIT:
             return {
                 ...state,
