@@ -80,9 +80,19 @@ describe('UserUnitTestingComponent', () => {
         tick(); // tick - finishes all async tasks immediately
         expect(component.data).toBe('Data');
     }))
+
+    it('A pending test', () => {
+        pending('With some reason');
+        // if to disable with 'xit', then it aslo will be pending, but with message:
+        // PENDING WITH MESSAGE: Temporarily disabled with xit
+    });
 });
+
+// ng test --no-watch - to run not in hot mode, but run and exit
 
 // useful methods:
 //
 // component.ngOnInit();
 // expect(component.formGroup instanceof FormGroup).toBe(true);
+//
+// fail()

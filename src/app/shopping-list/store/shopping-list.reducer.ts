@@ -7,11 +7,6 @@ export interface State {
     editedIngredientIndex: number;
 }
 
-export interface AppState {
-    shoppingList: State; // as in app.module
-}
-
-
 // state must be IMMUTABLE!!!
 const initialState: State = {
     ingredients: [

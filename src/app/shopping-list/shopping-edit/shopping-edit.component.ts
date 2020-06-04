@@ -6,6 +6,7 @@ import {Subscription} from 'rxjs';
 import {Store} from '@ngrx/store';
 import * as ShoppingListActions from '../store/shopping-list.actions';
 import * as fromShoppingList from '../store/shopping-list.reducer'; // fromShoppingList - convention
+import * as fromApp from '../../global-store/app.reducer';
 
 @Component({
     selector: 'app-shopping-edit',
@@ -28,7 +29,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
                              shoppingList: {// shoppingList - as declared in app.module
                                  ingredients: Ingredient[] // as indicated in shopping-list reducer
                              }}>*/
-                private store: Store<fromShoppingList.AppState>
+                private store: Store<fromApp.AppState>
     ) {
     }
 
