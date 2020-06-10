@@ -16,13 +16,14 @@ describe('CalculatorService', () => {
 
         TestBed.configureTestingModule({
             providers: [
-                CalculatorServic,
+                CalculatorServic, // actual instance
                 // instead of using another LoggerService instance, we replace it with provider:
                 // useValue - provides a value, that will be used when we need LoggerService
                 {provide: LoggerService, useValue: loggerSpy} // LoggerService - DI token - unique key
             ]
         })
 
+        // ??? is it the same as: calculatorService = TestBed.get(CalculatorServic)
         calculatorService = TestBed.inject(CalculatorServic);
     })
 

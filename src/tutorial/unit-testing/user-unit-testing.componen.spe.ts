@@ -10,6 +10,7 @@ describe('UserUnitTestingComponent', () => {
     let component: UserUnitTestingComponen;
     let fixture: ComponentFixture<UserUnitTestingComponen>;
 
+    // async beforeEach block
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [UserUnitTestingComponen]
