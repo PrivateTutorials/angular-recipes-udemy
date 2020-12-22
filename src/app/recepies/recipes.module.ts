@@ -27,8 +27,9 @@ import {SharedModule} from '../shared/shared.module';
     ],
     // these Components will be used not only in Recipes module, but on all other modules, that import this module
     exports: [
-        // no reasons to export all Recipes components because we both: 1) use them internally and app.module doesn't need them
-        // 1) we import routing module here, that also uses them
+        // no reasons to export all Recipes components because we both:
+        // 1) use them internally and app.module doesn't need them
+        // 2) we import routing module here, that also uses them
     ]
 })
 export class RecipesModule {

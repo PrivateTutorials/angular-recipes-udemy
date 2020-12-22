@@ -61,8 +61,6 @@ describe('UserUnitTestingComponent', () => {
 
     it('should fetch data if is called asynchronously', async(() => {
         const dataService = fixture.debugElement.injector.get(DataServic);
-        // we spy on getDetails() f() of dataService.
-        // Means - we get informed whe f() is being executed and then, we return mock data
         let spy = spyOn(dataService, 'getDetails').and.returnValue(Promise.resolve('Data'));
         fixture.detectChanges();
         // behaves more like a real async test
@@ -74,8 +72,6 @@ describe('UserUnitTestingComponent', () => {
 
     it('should fetch data if is called asynchronously, but without whenStable() f()', fakeAsync(() => {
         const dataService = fixture.debugElement.injector.get(DataServic);
-        // we spy on getDetails() f() of dataService.
-        // Means - we get informed whe f() is being executed and then, we return mock data
         let spy = spyOn(dataService, 'getDetails').and.returnValue(Promise.resolve('Data'));
         fixture.detectChanges();
         tick(); // tick - finishes all async tasks immediately
